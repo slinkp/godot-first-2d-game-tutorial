@@ -31,8 +31,17 @@ func _process(delta):
 		# No animation unless moving
 		$AnimatedSprite2D.stop()
 
+	if velocity.x != 0:
+		$AnimatedSprite2D.animation = "walk"
+		$AnimatedSprite2D.flip_v = false
+		# See the note below about boolean assignment.
+		$AnimatedSprite2D.flip_h = velocity.x < 0
+	elif velocity.y != 0:
+		$AnimatedSprite2D.animation = "up"
+		$AnimatedSprite2D.flip_v = velocity.y > 0
+	
 	position += velocity * delta
-
+	
 	# Don't allow going off screen!
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
