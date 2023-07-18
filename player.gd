@@ -56,7 +56,7 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	hide() # Player disappears when hit. Could later replace with an explosion animation etc
 	player_hit.emit()
 	# Must be deferred as we can't change physics properties on a physics callback.
