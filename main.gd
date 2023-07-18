@@ -29,6 +29,7 @@ func new_game():
 
 func _on_score_timer_timeout():
 	score += 1
+	$HUD.update_score(score)
 
 func _on_start_timer_timeout():
 	print("Start timer timed out")
