@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://donsci6yp5nuu"]
+[gd_scene load_steps=5 format=3 uid="uid://donsci6yp5nuu"]
 
 [ext_resource type="Script" path="res://hud.gd" id="1_2ib2y"]
 [ext_resource type="FontFile" uid="uid://bvcej3rh0u0q6" path="res://fonts/Xolonium-Regular.ttf" id="1_cfeds"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_ecipo"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_pabmx"]
+events = [SubResource("InputEventAction_ecipo")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_2ib2y")
@@ -53,6 +59,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_cfeds")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_pabmx")
 text = "Start
 "
 clip_text = true
