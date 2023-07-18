@@ -21,6 +21,8 @@ func game_over():
 func new_game():
 	print("Starting new game")
 	score = 0
+	# Tell any existing enemies from previous game to delete themselves.
+	get_tree().call_group("all_mobs", "queue_free")
 	$HUD.update_score(score)
 	$HUD.show_message("Get ready...")
 	$Player.start($StartPositionMarker.position)
