@@ -1,5 +1,7 @@
 extends Area2D
 
+signal player_hit
+
 # @export allows setting in the inspector, cool!
 @export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size
@@ -8,6 +10,7 @@ var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	hide()  # Don't show player when starting.
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -45,3 +48,16 @@ func _process(delta):
 	# Don't allow going off screen!
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
+
+
+func start(pos):
+	# CUstom function to set up a player when we start.
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
+
+func _on_body_entered(body):
+	hide() # Player disappears when hit. Could later replace with an explosion animation etc
+	player_hit.emit()
+	# Must be deferred as we can't change physics properties on a physics callback.
+	$CollisionShape2D.set_deferred("disabled", true)
