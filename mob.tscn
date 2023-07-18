@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu1837fpjqdte"]
+[gd_scene load_steps=10 format=3 uid="uid://bu1837fpjqdte"]
 
+[ext_resource type="Script" path="res://mob.gd" id="1_68u4w"]
 [ext_resource type="Texture2D" uid="uid://bnbc82y1mffeg" path="res://art/enemyFlyingAlt_1.png" id="1_lw46a"]
 [ext_resource type="Texture2D" uid="uid://n0qlqdcffptk" path="res://art/enemyFlyingAlt_2.png" id="2_y0o0q"]
 [ext_resource type="Texture2D" uid="uid://cwod3ke2nhgte" path="res://art/enemySwimming_1.png" id="3_2mgtd"]
@@ -50,13 +51,13 @@ height = 96.0
 [node name="Mob" type="RigidBody2D"]
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_68u4w")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_l82ug")
 animation = &"fly"
-frame_progress = 0.402535
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
