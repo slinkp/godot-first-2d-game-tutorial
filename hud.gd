@@ -28,7 +28,7 @@ func show_game_over():
 	# Easier for short sleeps than creating a Timer node.
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
-	
+
 func update_score(score):
 	$ScoreLabel.text = str(score)
 

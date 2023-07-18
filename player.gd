@@ -11,7 +11,7 @@ var screen_size
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()  # Don't show player when starting.
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2.ZERO
@@ -24,7 +24,7 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
-	
+
 	if velocity.length() > 0:
 		# Normalizing fixes diagonals being faster.
 		# more at https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html#doc-vector-math
@@ -42,9 +42,9 @@ func _process(delta):
 	elif velocity.y != 0:
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v = velocity.y > 0
-	
+
 	position += velocity * delta
-	
+
 	# Don't allow going off screen!
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
