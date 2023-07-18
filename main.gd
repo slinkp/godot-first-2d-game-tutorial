@@ -16,6 +16,8 @@ func game_over():
 	print("Game over!!!")
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$GameOverSound.play()
+	$Music.stop()
 	$HUD.show_game_over()
 
 func new_game():
@@ -26,6 +28,7 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get ready...")
 	$Player.start($StartPositionMarker.position)
+	$Music.play()
 	$StartTimer.start()
 
 
